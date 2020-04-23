@@ -61,7 +61,7 @@ app.use(function(req,res,next){
     app.use("/campgrounds/:id/comments",commentRoutes);
     app.use("/campgrounds",campgroundRoutes);
     app.use(indexRoutes);
-app.get("*",function(res,req){
+app.get("*",function(req,res){
 res.send("Sorry!!..Try another route");
 })
 app.listen(process.env.PORT,process.env.IP,function(){
