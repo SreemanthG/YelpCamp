@@ -28,7 +28,10 @@ app.use(flash());
 app.use(require("express-session")({
     secret: "Im the cutest dog",
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+      }
 }))
 
 app.use(passport.initialize());
