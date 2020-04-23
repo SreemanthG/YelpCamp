@@ -10,7 +10,10 @@ var express         = require("express"),
     LocalStrategy   = require("passport-local"),
     flash           = require('connect-flash'),           
     User            = require("./models/user");
-    var MemoryStore = require('memorystore')(require("express-session"))
+
+    var session = require('express-session')
+    var MemoryStore = require('memorystore')(session)
+    
 
 var commentRoutes = require('./routes/comment'),
     campgroundRoutes = require("./routes/campground"),
@@ -29,13 +32,15 @@ app.use(flash());
 app.use(require("express-session")({
     secret: "Im the cutest dog",
     resave: false,
-    saveUninitialized: false,
-    cookie: {
-        maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
-      },
-      store: new MemoryStore({
-        checkPeriod: 86400000 // prune expired entries every 24h
-      }),
+    saveUninitialized: true,
+    cookie:{
+        secure: true,
+        maxAge:60000
+           },
+           store: new MemoryStore({
+            checkPeriod: 60000 // prune expired entries every 24h
+          }),
+    
 }))
 
 app.use(passport.initialize());
