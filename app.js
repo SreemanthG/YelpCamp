@@ -61,7 +61,9 @@ app.use(function(req,res,next){
     app.use("/campgrounds/:id/comments",commentRoutes);
     app.use("/campgrounds",campgroundRoutes);
     app.use(indexRoutes);
-
+app.get("*",function(res,req){
+res.send("Sorry!!..Try another route");
+})
 app.listen(3000,function(){
     console.log("Server has started at port 3000")
 });
