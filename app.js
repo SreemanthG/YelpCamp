@@ -35,11 +35,11 @@ app.use(require("express-session")({
     saveUninitialized: true,
     cookie:{
         secure: true,
-        maxAge:60000
+        // maxAge:60000
            },
-           store: new MemoryStore({
-            checkPeriod: 60000 // prune expired entries every 24h
-          }),
+        //    store: new MemoryStore({
+        //     checkPeriod: 60000 // prune expired entries every 24h
+        //   }),
     
 }))
 
