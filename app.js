@@ -60,6 +60,6 @@ app.use(function(req,res,next){
     app.use("/campgrounds",campgroundRoutes);
     app.use(indexRoutes);
 
-app.listen(3000,process.env.IP,function(){
+app.listen(process.env.PORT,process.env.IP,function(){
     console.log("Server has started at port "+process.env.PORT)
 });
