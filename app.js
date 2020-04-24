@@ -34,12 +34,12 @@ app.use(require("express-session")({
     resave: false,
     saveUninitialized: true,
     cookie:{
-        secure: true,
-        // maxAge:60000
-           },
-        //    store: new MemoryStore({
-        //     checkPeriod: 60000 // prune expired entries every 24h
-        //   }),
+    maxAge: 60000,
+    store: new MemoryStore({
+            checkPeriod: 60000 // prune expired entries every 24h
+          }),
+    }
+
     
 }))
 
@@ -56,14 +56,10 @@ app.use(function(req,res,next){
     next();
 })
 
-
-
     app.use("/campgrounds/:id/comments",commentRoutes);
     app.use("/campgrounds",campgroundRoutes);
     app.use(indexRoutes);
-app.get("*",function(req,res){
-res.send("Sorry!!..Try another route");
-})
-app.listen(process.env.PORT,process.env.IP,function(){
+
+app.listen(3000,process.env.IP,function(){
     console.log("Server has started at port "+process.env.PORT)
 });
